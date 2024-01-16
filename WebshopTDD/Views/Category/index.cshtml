@@ -1,0 +1,16 @@
+﻿@page
+@model WebshopTDD.Views.Category.indexModel
+
+
+<h2>Categories</h2>
+
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>
+            <a asp-controller="Product" asp-action="Index" asp-route-categoryId="@category.Id">
+                @category.Name
+            </a>
+        </li>
+    }
+</ul>

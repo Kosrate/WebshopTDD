@@ -1,0 +1,38 @@
+﻿@model List<Tuple<WebshopTDD.Models.Product, List<int>>>
+
+<h2>Products</h2>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var tuple in Model)
+        {
+            var product = tuple.Item1;
+            var categoryIds = tuple.Item2;
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">Price: @product.Price</p>
+
+                        @if (categoryIds.Any())
+                        {
+                            <p class="card-text">Categories:</p>
+                            <ul>
+                                @foreach (var categoryId in categoryIds)
+                                {
+                                    <li>@categoryId</li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No products found.</p>
+}
